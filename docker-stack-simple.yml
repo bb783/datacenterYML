@@ -33,7 +33,7 @@ services:
     depends_on:
       - redis
     deploy:
-      replicas: 1
+      replicas: 2
       update_config:
         parallelism: 2
       restart_policy:
@@ -73,8 +73,9 @@ services:
         window: 120s
       placement:
         constraints: [node.role == manager]
+
   visualizer:
-    image: dockersamples/visualzer:stable
+    image: dockersamples/visualizer
     ports:
       - "8080:8080"
     stop_grace_period: 1m30s
